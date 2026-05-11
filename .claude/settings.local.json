@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat \"C:/Users/kholo/.claude.json\" 2>/dev/null | grep -B 2 -A 10 '\"mcp.figma\"' | head -40 *)"
+    ]
+  }
+}
