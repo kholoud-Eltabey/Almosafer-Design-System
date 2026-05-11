@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Almosafer Design System</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      background: var(--color-background-default, #f9fafb);
+      color: var(--color-text-primary, #091E42);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--color-background-primary, #1a7f7f);
+      color: var(--color-text-inverse, #ffffff);
+      padding: 48px 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 64px;
+    }
+
+    .layer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 32px 0 56px;
+    }
+
+    .layer-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border-default, #DCDFE4);
+      border-radius: 8px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .layer-card:hover {
+      border-color: var(--color-border-focus, #1a7f7f);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .layer-number {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-secondary, #6B778C);
+      margin-bottom: 8px;
+    }
+
+    .layer-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .layer-card p {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary, #6B778C);
+    }
+
+    section { margin-bottom: 56px; }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-border-default, #DCDFE4);
+    }
+
+    .spec-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .spec-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      border: 1px solid var(--color-border-default, #DCDFE4);
+      border-radius: 6px;
+      padding: 12px 16px;
+      font-size: 0.875rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s;
+    }
+
+    .spec-item:hover {
+      border-color: var(--color-border-focus, #1a7f7f);
+    }
+
+    .spec-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-background-primary, #1a7f7f);
+      flex-shrink: 0;
+    }
+
+    .token-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .token-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      background: #ffffff;
+      border: 1px solid var(--color-border-default, #DCDFE4);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-family: monospace;
+    }
+
+    .token-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 0.8rem;
+      color: var(--color-text-secondary, #6B778C);
+      border-top: 1px solid var(--color-border-default, #DCDFE4);
+    }
+
+    footer a {
+      color: var(--color-background-primary, #1a7f7f);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Almosafer Design System</h1>
+  <p>Token-driven · Bilingual (AR / EN) · Light &amp; Dark · WCAG 2.1 AA</p>
+</header>
+
+<main>
+
+  <section>
+    <h2>Architecture</h2>
+    <div class="layer-grid">
+      <div class="layer-card">
+        <div class="layer-number">Layer 1</div>
+        <h3>Foundations</h3>
+        <p>Raw values — color, spacing, radius, motion, typography.</p>
+      </div>
+      <div class="layer-card">
+        <div class="layer-number">Layer 2</div>
+        <h3>Tokens</h3>
+        <p>Semantic mapping. Every token maps intent to a foundation value.</p>
+      </div>
+      <div class="layer-card">
+        <div class="layer-number">Layer 3</div>
+        <h3>Atoms</h3>
+        <p>Single-purpose components. Consume tokens only.</p>
+      </div>
+      <div class="layer-card">
+        <div class="layer-number">Layer 4</div>
+        <h3>Patterns</h3>
+        <p>Compositions of atoms solving recurring interface problems.</p>
+      </div>
+      <div class="layer-card">
+        <div class="layer-number">Layer 5</div>
+        <h3>Flows</h3>
+        <p>Complete user journeys from checkout to onboarding.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Atoms</h2>
+    <div class="spec-list">
+      <a class="spec-item" href="specs/atoms/button.md"><span class="spec-dot"></span>Button</a>
+      <a class="spec-item" href="specs/atoms/input.md"><span class="spec-dot"></span>Input</a>
+      <a class="spec-item" href="specs/atoms/checkbox.md"><span class="spec-dot"></span>Checkbox</a>
+      <a class="spec-item" href="specs/atoms/radio.md"><span class="spec-dot"></span>Radio</a>
+      <a class="spec-item" href="specs/atoms/switch.md"><span class="spec-dot"></span>Switch</a>
+      <a class="spec-item" href="specs/atoms/badge.md"><span class="spec-dot"></span>Badge</a>
+      <a class="spec-item" href="specs/atoms/tag.md"><span class="spec-dot"></span>Tag</a>
+      <a class="spec-item" href="specs/atoms/avatar.md"><span class="spec-dot"></span>Avatar</a>
+      <a class="spec-item" href="specs/atoms/icon.md"><span class="spec-dot"></span>Icon</a>
+      <a class="spec-item" href="specs/atoms/icon-button.md"><span class="spec-dot"></span>Icon Button</a>
+      <a class="spec-item" href="specs/atoms/link.md"><span class="spec-dot"></span>Link</a>
+      <a class="spec-item" href="specs/atoms/label.md"><span class="spec-dot"></span>Label</a>
+      <a class="spec-item" href="specs/atoms/spinner.md"><span class="spec-dot"></span>Spinner</a>
+      <a class="spec-item" href="specs/atoms/tooltip.md"><span class="spec-dot"></span>Tooltip</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Patterns</h2>
+    <div class="spec-list">
+      <a class="spec-item" href="specs/patterns/form.md"><span class="spec-dot"></span>Form</a>
+      <a class="spec-item" href="specs/patterns/dialog.md"><span class="spec-dot"></span>Dialog</a>
+      <a class="spec-item" href="specs/patterns/table.md"><span class="spec-dot"></span>Table</a>
+      <a class="spec-item" href="specs/patterns/search.md"><span class="spec-dot"></span>Search</a>
+      <a class="spec-item" href="specs/patterns/filters.md"><span class="spec-dot"></span>Filters</a>
+      <a class="spec-item" href="specs/patterns/notifications.md"><span class="spec-dot"></span>Notifications</a>
+      <a class="spec-item" href="specs/patterns/empty-state.md"><span class="spec-dot"></span>Empty State</a>
+      <a class="spec-item" href="specs/patterns/catalog-card.md"><span class="spec-dot"></span>Catalog Card</a>
+      <a class="spec-item" href="specs/patterns/catalog-list.md"><span class="spec-dot"></span>Catalog List</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Token Preview</h2>
+    <div class="token-preview">
+      <span class="token-chip"><span class="token-swatch" style="background:var(--color-background-primary,#1a7f7f)"></span>color.background.primary</span>
+      <span class="token-chip"><span class="token-swatch" style="background:var(--color-background-surface,#ffffff)"></span>color.background.surface</span>
+      <span class="token-chip"><span class="token-swatch" style="background:var(--color-text-primary,#091E42)"></span>color.text.primary</span>
+      <span class="token-chip"><span class="token-swatch" style="background:var(--color-status-danger,#E5484D)"></span>color.status.danger</span>
+      <span class="token-chip"><span class="token-swatch" style="background:var(--color-status-success,#46A758)"></span>color.status.success</span>
+      <span class="token-chip"><span class="token-swatch" style="background:var(--color-status-warning,#EDD056)"></span>color.status.warning</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Almosafer Design System &mdash; maintained by Team 4 &mdash;
+    <a href="https://github.com/kholoud-Eltabey/Almosafer-Design-System" target="_blank">View on GitHub</a>
+  </p>
+</footer>
+
+</body>
+</html>
