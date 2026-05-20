@@ -76,7 +76,7 @@ Contains font family variables only. This collection exists solely to control la
 
 | Variable | English mode | Arabic mode |
 |---|---|---|
-| `font/family/primary` | IBM Plex Sans | IBM Plex Sans Arabic |
+| `font/family/primary` | IBM Plex Sans | Cairo |
 
 ### Semantic
 
@@ -114,7 +114,7 @@ The default language mode. The Typography collection resolves `font/family/prima
 
 **Arabic**
 
-The Arabic language mode. The Typography collection resolves `font/family/primary` to IBM Plex Sans Arabic. Text direction is RTL. Frame mirroring and auto-layout direction must reverse automatically when this mode is applied at the page or frame level.
+The Arabic language mode. The Typography collection resolves `font/family/primary` to Cairo. Text direction is RTL. Frame mirroring and auto-layout direction must reverse automatically when this mode is applied at the page or frame level.
 
 ### Mode Inheritance Behavior
 
@@ -168,7 +168,7 @@ Font variables are split across two collections by purpose. `font/family/primary
 
 | Example | Mode |
 |---|---|
-| `font/family/primary` | Resolves to IBM Plex Sans (English) or IBM Plex Sans Arabic (Arabic) |
+| `font/family/primary` | Resolves to IBM Plex Sans (English) or Cairo (Arabic) |
 
 **Font size** — `font/size/[scale]` — Semantic collection
 
@@ -304,7 +304,7 @@ A layer at any level must never reference a variable from a layer above it. Depe
 
 **IBM Plex Sans** — Applied in English mode. Used for all Latin script text across the entire system.
 
-**IBM Plex Sans Arabic** — Applied in Arabic mode. Used for all Arabic script text across the entire system. This font replaces IBM Plex Sans completely in Arabic mode; the two fonts are not mixed within a single text layer.
+**Cairo** — Applied in Arabic mode. Used for all Arabic script text across the entire system. This font replaces IBM Plex Sans completely in Arabic mode; the two fonts are not mixed within a single text layer.
 
 No other font families are permitted in the system.
 
@@ -312,7 +312,7 @@ No other font families are permitted in the system.
 
 | Variable | English mode | Arabic mode |
 |---|---|---|
-| `font/family/primary` | IBM Plex Sans | IBM Plex Sans Arabic |
+| `font/family/primary` | IBM Plex Sans | Cairo |
 
 The `font/family/primary` variable is bound to every text layer in every component. Switching the language mode at the frame level updates all text layers automatically.
 

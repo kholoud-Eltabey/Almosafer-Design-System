@@ -47,7 +47,7 @@ Arabic and English are both primary languages. Neither is secondary or a fallbac
 | Script directions | RTL (Arabic) and LTR (English) |
 | Layout direction | Determined by active language. Components must not assume LTR. |
 | CSS approach | All directional properties use logical CSS (`margin-inline-start`, `padding-inline-end`, `text-align: start`). Physical properties (`margin-left`, `padding-right`) are banned in component specs. |
-| Typography | `font.family` resolves to IBM Plex Sans in English mode and IBM Plex Sans Arabic in Arabic mode. The token name does not change between languages. |
+| Typography | `font.family` resolves to IBM Plex Sans in English mode and Cairo in Arabic mode. The token name does not change between languages. |
 | Icon direction | Icons that imply direction (arrows, back/forward) must flip in RTL. Decorative icons do not flip. |
 | Number formatting | Prices and quantities must respect locale-specific formatting. Components must not hardcode numeral systems. |
 

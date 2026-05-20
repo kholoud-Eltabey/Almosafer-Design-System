@@ -509,6 +509,8 @@ If a contribution produces a disagreement between the author and the reviewer, t
 2026-04-30  add     specs/flows/authentication-flow.md — Authentication Flow spec covering login, signup, OTP, and password reset (Kholoud Eltabey)
 2026-04-30  update  specs/foundations/typography.md — Updated font families to IBM Plex Sans (Latin) and IBM Plex Sans Arabic (Kholoud Eltabey)
 2026-04-30  update  CLAUDE.md — Added /specs/flows to project structure, added flow tier, added Layer 5 definition (Kholoud Eltabey)
+2026-05-20  update  specs/foundations/typography.md — Changed Arabic font from IBM Plex Sans Arabic to Cairo (Kholoud Eltabey)
+2026-05-20  update  figma-mapping.md, product.md, README.md — Sync Arabic font to Cairo across all references (Kholoud Eltabey)
 2026-04-30  update  DESIGN.md — Added section 7 Flows — Tier 5, renumbered subsequent sections (Kholoud Eltabey)
 2026-04-30  update  README.md — Added /flows to folder structure, reading order, contribution guidance (Kholoud Eltabey)
 2026-04-30  add     governance.md — Initial governance file (Kholoud Eltabey)

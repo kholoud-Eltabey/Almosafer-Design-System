@@ -2,7 +2,7 @@
 name: Typography Foundation
 tier: foundation
 status: stable
-last-updated: 2026-05-06
+last-updated: 2026-05-20
 maintainer: Team 4
 source: Almosafer Design System
 ---
@@ -59,15 +59,15 @@ One font family variable is defined. Language switching is handled through modes
 | Primitive name | Mode | Resolves to | Context |
 |---|---|---|---|
 | `font.family` | English | `"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif` | LTR — all Latin-script UI text |
-| `font.family` | Arabic | `"IBM Plex Sans Arabic", "Geeza Pro", "Arial Unicode MS", sans-serif` | RTL — all Arabic-script UI text |
+| `font.family` | Arabic | `"Cairo", "Geeza Pro", "Arial Unicode MS", sans-serif` | RTL — all Arabic-script UI text |
 
 **Rules:**
 
 - `font.family` is the only font family primitive in the system. Do not create `font.family.en`, `font.family.ar`, or `font.family.primary`.
 - Language switching is mode-based. The resolved typeface changes with the active `lang` attribute and layout direction. The primitive name does not change.
 - `"IBM Plex Sans"` is used for all UI text in LTR (English) contexts: headings, body, labels, captions, and actions.
-- `"IBM Plex Sans Arabic"` is used for all UI text in RTL (Arabic) contexts. It is not a fallback — it is the primary typeface for Arabic script.
-- Both IBM Plex Sans families share a common design system and optical scale, ensuring visual consistency across language contexts without size or weight adjustments.
+- `"Cairo"` is used for all UI text in RTL (Arabic) contexts. It is not a fallback — it is the primary typeface for Arabic script.
+- IBM Plex Sans (LTR) and Cairo (RTL) are selected to maintain visual consistency across language contexts without requiring size or weight adjustments.
 - Do not introduce additional font families. Do not use display or decorative fonts.
 - Font loading is a product-level concern. Primitives assume the font is available. Fallbacks are defined here and must not be altered in component specs.
 
@@ -91,19 +91,13 @@ All sizes follow a strict 4pt progression. Do not introduce intermediate values 
 
 ## 5. Line Height
 
-Line height is defined as a unitless ratio applied to the font size. Unitless values scale correctly across all font sizes without producing subpixel rendering issues.
-
-| Token | Value | Usage note |
-|---|---|---|
-| `line-height-tight` | `1.2` | Headings, display text, single-line labels. |
-| `line-height-normal` | `1.5` | Body text, multi-line copy, form labels. |
-| `line-height-loose` | `1.75` | Long-form content, help text, accessibility-sensitive contexts. |
+Line height is defined as a unitless ratio applied to the font size. Unitless values scale correctly across all font sizes without producing subpixel rendering issues. The percentage form (e.g., `120%`) is equivalent and may be used in design tool contexts where percentage is the native input format.
 
 **Rules:**
 
-- Do not use pixel or em line height values. Unitless ratios only.
-- Body text must use `line-height-normal` or `line-height-loose`. Never `line-height-tight`.
-- Headings use `line-height-tight` at large sizes. Below `font.size.20`, use `line-height-normal`.
+- Do not use pixel or em line height values. Unitless ratios or their percentage equivalents only.
+- Body text must use a line height of `1.5` (`150%`) or greater. Values of `1.2` (`120%`) are reserved for headings, display text, and highlight callouts — never body copy.
+- Heading text at `font.size.24` and above uses `1.2` (`120%`). Below `font.size.20`, use `1.5` (`150%`).
 - Do not override line height in component specs without a documented accessibility justification.
 
 ---
@@ -166,7 +160,7 @@ Typography decisions directly affect legibility, readability, and inclusive acce
 |---|---|
 | Minimum font size | `font.size.12` is the absolute minimum for readable text. |
 | Body text minimum | Body copy must use `font.size.16` or larger. `font.size.12` is reserved for captions and supplementary metadata only. |
-| Line height for body | Multi-line body text must use `line-height-normal` (1.5) or `line-height-loose` (1.75). Tight line heights on body text fail readability requirements. |
+| Line height for body | Multi-line body text must use a line height of `1.5` (`150%`) or greater. A line height of `1.2` (`120%`) on body text fails readability requirements. |
 | Text resizing | The system must support browser text scaling up to 200% without loss of content or functionality. Do not use fixed-height containers that clip scaled text. |
 | Contrast | Text contrast is enforced at the token layer using color primitives. Text tokens must meet WCAG 2.1 AA (4.5:1 for normal text, 3:1 for large text). Refer to [color.md](color.md) for contrast ratios. |
 | Multilingual rendering | Font families must support extended Latin, Arabic, and other required scripts. Validate character coverage before finalizing font selection. |
@@ -211,7 +205,7 @@ Raw values are not traceable, not auditable, and break when the scale changes.
 ```
 ✗  font-size: font.size.16
 ✗  font-weight: font.weight.semibold
-✗  line-height: line-height-normal
+✗  line-height: 1.2
 ```
 
 Primitives carry no semantic meaning. A component referencing `font-size-300` directly cannot participate in token-level theming or density switching.
@@ -279,7 +273,36 @@ Do not add a new step to resolve a one-off design decision. Typography primitive
 
 ---
 
-## 13. Cross-references
+## 13. Highlight Typography
+
+Two additional line-height values are defined for highlighted, callout, and emphasis-specific text that sits outside the standard tight / normal / loose triad.
+
+| Primitive name | Semantic name | Ratio | Percentage | Usage note |
+|---|---|---|---|---|
+| `font.line-height.1dot2` | `font.line-height.sm` | `1.2` | `120%` | Compact highlight. Price callouts, KPI figures, large numeric displays, stat values, single-line emphasized text. |
+| `font.line-height.1dot4` | `font.line-height.md` | `1.4` | `140%` | Comfortable highlight. Featured labels, short promotional copy, two-line callouts needing more breathing room than a display heading. |
+
+Both formats — unitless ratio and percentage — represent the same line-height behavior and produce identical rendered output. Use the ratio form (`1.2`, `1.4`) in CSS and token references. Use the percentage form (`120%`, `140%`) in design tool properties where percentage is the native input format.
+
+**Rules:**
+
+- Do not mix ratio and percentage forms within the same codebase. Choose one form per implementation context and apply it consistently.
+- `font.line-height.1dot2` (semantic: `font.line-height.sm`) uses the same value as heading line heights (1.2 / 120%). The distinction is semantic — highlight and heading roles must remain separate at the token layer. Do not use the highlight primitive for headings or vice versa.
+- `line-height-highlight-2` (1.4 / 140%) is the only value in the scale at this position — between tight and normal.
+- Do not use either highlight value on body text or multi-line paragraphs. These values are for short, emphasis-specific elements only.
+- Line height must always be declared explicitly. Do not rely on browser defaults.
+
+**Arabic and English compatibility:**
+
+Both values apply equally to IBM Plex Sans (English / LTR) and Cairo (Arabic / RTL). No script-specific adjustment is needed. Do not reduce either value for Arabic text — Arabic glyphs have taller optical proportions and require the same or greater line height to prevent clipping of diacritics.
+
+**RTL / LTR:**
+
+Line height is a vertical property and is unaffected by reading direction. The same values apply in both LTR and RTL layouts. All directional properties on highlight elements must use logical CSS: `text-align: start`, `margin-inline-start`. Do not use physical directional properties.
+
+---
+
+## 14. Cross-references
 
 - [typography-tokens.md](../tokens/typography-tokens.md) — Semantic token definitions that map to this primitive scale
 - [color.md](color.md) — Text contrast requirements depend on color primitives defined in the color foundation

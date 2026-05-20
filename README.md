@@ -70,7 +70,7 @@ The system supports Arabic (RTL) and English (LTR) through a single `font.family
 | Mode | Resolves to |
 |---|---|
 | English | IBM Plex Sans |
-| Arabic | IBM Plex Sans Arabic |
+| Arabic | Cairo |
 
 Font family switches with the active `lang` attribute and layout direction. No separate primitives or token variants are created per language. All directional layout properties in component specs use logical CSS (`text-align: start`, `margin-inline-start`).
 
